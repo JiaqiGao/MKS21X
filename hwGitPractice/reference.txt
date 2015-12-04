@@ -1,0 +1,8 @@
+GIT COMMANDS
+
+git config --global user.name : CONFIGURE NAME AND EMAIL ADDRESS WITH YOUR COMMITS
+git config --global user.email
+git init : CREATE A LOCAL REPOSITORY
+git add <filename> : ADD FILES TO STAGE
+git push origin master : SEND CHANGES TO MASTER BRANCH
+git pull : FETCH AND MERGE CHANGES ON THE REMOTE SERVER TO WORKING DIRECTORY
