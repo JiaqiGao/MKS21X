@@ -1,0 +1,6 @@
+public class Driver{
+     public static void main(String[] args){
+	 Window3 w3 = new Window3();
+
+     }
+}
