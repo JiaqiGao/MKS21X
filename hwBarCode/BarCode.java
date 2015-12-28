@@ -1,5 +1,4 @@
-public class BarCode{
-//implements Comparable{
+public class BarCode implements Comparable{
     private String _zip;
     private int _checkDigit;
     public static String[] key = new String[] {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
@@ -42,16 +41,8 @@ public class BarCode{
         barcode+= key[_checkDigit] + "|";
         return barcode; 
     }
-    
-    public static void main(String[]arggs){
-        BarCode bc = new BarCode("08451");
-        BarCode no = new BarCode(bc);
-        System.out.println(no);
-        System.out.println(bc.equals(no)); //should return true
-    }
 
-
-    public boolean equals(Object other){
+       public boolean equals(Object other){
         return this == other || (other instanceof BarCode && _zip.equals(((BarCode)other)._zip));
     }
     // postcondition: false if the object is not a BarCode, 
@@ -59,9 +50,20 @@ public class BarCode{
     // true when they match.
 
 
-    public int compareTo(Comparable other){
+    public int compareTo(Object other){
         return Integer.compare(_checkDigit, ((BarCode)other)._checkDigit);
     }
+    
+    public static void main(String[]arggs){
+        BarCode bc = new BarCode("08451");
+        BarCode no = new BarCode(bc);
+        System.out.println(no);
+        System.out.println(bc.equals(no)); //should return true
+    }
+    
+
+
+ 
     // postcondition: compares the zip + checkdigit
 }
 
