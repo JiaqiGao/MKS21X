@@ -12,7 +12,7 @@ public class BarCode{
     //               _zip and _checkDigit are initialized.
     public BarCode(String zip) {
         _zip = zip;
-        _checkDigit = zip.length();
+        _checkDigit = checkSum();
     }
 
     // postcondition: Creates a copy of a bar code.
@@ -22,21 +22,28 @@ public class BarCode{
 
 
     //post: computes and returns the check sum for _zip
-    //  private int checkSum(){}
+    private int checkSum(){
+        int sum = 0;
+        for (int i=0; i<5; i++){
+            sum+=Integer.parseInt(_zip.substring(i,i+1));
+        }
+        sum = sum%10;
+        return sum;
+    }
 
     //postcondition: format zip + check digit + barcode 
     //ex. "084518  |||:::|::|::|::|:|:|::::|||::|:|"      
     public String toString(){
-        String barcode = _zip + " |";
+        String barcode = _zip + _checkDigit + " |";
         for (int i=0; i<5; i++){
             barcode+=key[Integer.parseInt(_zip.substring(i,i+1))];
-        }
-        barcode+="|";
+        }  
+        barcode+= key[_checkDigit] + "|";
         return barcode; 
     }
     
     public static void main(String[]arggs){
-        BarCode bc = new BarCode("084518");
+        BarCode bc = new BarCode("08451");
         System.out.println(bc);
     }
 
