@@ -16,9 +16,10 @@ public class BarCode{
     }
 
     // postcondition: Creates a copy of a bar code.
-    // public BarCode(BarCode x){
-        
-    // }
+    public BarCode(BarCode x){
+        _zip = x._zip;
+        _checkDigit = x.checkSum();
+    }
 
 
     //post: computes and returns the check sum for _zip
@@ -44,18 +45,22 @@ public class BarCode{
     
     public static void main(String[]arggs){
         BarCode bc = new BarCode("08451");
-        System.out.println(bc);
+        BarCode no = new BarCode(bc);
+        System.out.println(no);
+        System.out.println(bc.equals(no)); //should return true
     }
 
 
-    // public boolean equals(Object other){}
+    public boolean equals(Object other){
+        return this == other || (other instanceof BarCode && _zip.equals(((BarCode)other)._zip));
+    }
     // postcondition: false if the object is not a BarCode, 
     // false if it is a non-matching barcode
     // true when they match.
 
 
     public int compareTo(Comparable other){
-        return 1;
+        return Integer.compare(_checkDigit, ((BarCode)other)._checkDigit);
     }
     // postcondition: compares the zip + checkdigit
 }
