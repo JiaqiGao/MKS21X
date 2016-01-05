@@ -37,7 +37,7 @@ public class Sorts{
   }
     
     public static void main(String[]args){
-	    int[] tried = {2,3,4,2,1,7,5,-1,2222};
+      int[] tried = {2,3,4,2,1,7,5,-1,2222};
       int[] tried2 = {2,3,4,2,1,7,5,-1,2222};
       selection(tried);
       insertionSort(tried2);	
